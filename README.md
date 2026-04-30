@@ -14,7 +14,7 @@ This work builds on the original Role-Play Prompting paper and codebase:
 
 Large language models show strong reasoning ability, but their zero-shot performance can suffer when the prompt is generic and task-agnostic. Prior work shows that assigning an explicit role can improve reasoning, but manually crafting roles does not scale well across datasets, domains, or task types.
 
-Adaptive Role-Play Prompting asks a simple question: **can the LLM choose its own useful role before solving the task?**
+Self-Role Prompting asks a simple question: **can the LLM choose its own useful role before solving the task?**
 
 The goal is to bridge two useful properties:
 
@@ -50,7 +50,7 @@ User: Now using that role, answer the following question/task: [TASK].
 Assistant: [ANSWER]
 ```
 
-![Adaptive Role-Play pipeline](assets/adaptive_role_pipeline.png)
+![Self-Role Prompting pipeline](assets/self_role_pipeline.png)
 
 ## Experiments
 
@@ -70,7 +70,7 @@ Baselines:
 - Zero-Shot-CoT
 - Few-Shot-CoT
 - Static Role-Play Prompting with manually crafted roles
-- Adaptive Role-Play Prompting
+- Self-Role Prompting
 
 For CSQA and StrategyQA, the reported experiments used a randomly sampled 50% subset of the test set due to API and compute constraints.
 
@@ -84,15 +84,15 @@ Accuracy comparison reported in `reports/adaptive_role_selection_icml2025.pdf`:
 | Zero-Shot-CoT | 53.9 | 68.8* | 65.8* |
 | Few-Shot-CoT | 59.4 | 76.3* | 67.4* |
 | Static Role-Play Prompting | **63.8** | **77.2*** | 67.0* |
-| Adaptive Role-Play | 59.5 | 74.0* | **70.4*** |
+| Self-Role | 59.5 | 74.0* | **70.4*** |
 
 `*` indicates that 50% of the test dataset was used.
 
 Key takeaways:
 
-- On **AQUA-RAT**, Adaptive Role-Play reaches 59.5%, matching Few-Shot-CoT and outperforming Zero-Shot / Zero-Shot-CoT, while not requiring few-shot examples.
-- On **CSQA**, Adaptive Role-Play is competitive but below Few-Shot-CoT and static Role-Play, suggesting that manual role design can still help on some commonsense tasks.
-- On **StrategyQA**, Adaptive Role-Play achieves the best result, 70.4%, suggesting that dynamic role selection is especially useful for nuanced or strategic reasoning.
+- On **AQUA-RAT**, Self-Role reaches 59.5%, matching Few-Shot-CoT and outperforming Zero-Shot / Zero-Shot-CoT, while not requiring few-shot examples.
+- On **CSQA**, Self-Role is competitive but below Few-Shot-CoT and static Role-Play, suggesting that manual role design can still help on some commonsense tasks.
+- On **StrategyQA**, Self-Role achieves the best result, 70.4%, suggesting that dynamic role selection is especially useful for nuanced or strategic reasoning.
 
 ![Accuracy comparison across prompting methods](assets/accuracy_comparison.png)
 
@@ -158,7 +158,7 @@ export OPENAI_ORGANIZATION="..."
 
 ## Usage
 
-Run Adaptive Role-Play on AQUA-RAT:
+Run Self-Role Prompting on AQUA-RAT:
 
 ```bash
 python main.py --limit_dataset_size=100 --method=adaptive_role_play --model=turbo --dataset=aqua
