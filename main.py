@@ -68,11 +68,10 @@ def main():
         # Checking answer ...
         correct = (np.array([pred]) == np.array([y])).sum().item()
         correct_list.append(correct)
-        total += 1 #np.array([y]).size(0)
+        total += 1
         
         if (args.limit_dataset_size != 0) and ((i+1) >= args.limit_dataset_size):
             break
-            #raise ValueError("Stop !!")
     
     # Calculate accuracy ...
     accuracy = (sum(correct_list) * 1.0 / total) * 100
@@ -84,8 +83,6 @@ def clean_ans(ans):
         if ans[i] == ",":
             continue
         new_ans += ans[i]
-    # print(ans, new_ans)
-
     if '.' in new_ans:
         pos = new_ans.find('.')
         if len(new_ans) - pos -1 > 7:
