@@ -1,6 +1,6 @@
-# Adaptive Role-Play Prompting for Zero-Shot Reasoning
+# Self-Role Prompting for Zero-Shot Reasoning
 
-This repository contains an experimental implementation of **Adaptive Role-Play Prompting**, a zero-shot reasoning strategy where an LLM first selects the role it should assume for a task, then solves the task using that self-selected role.
+This repository contains an experimental implementation of **Self-Role Prompting**, a zero-shot reasoning strategy where an LLM first selects the role it should assume for a task, then solves the task using that self-selected role.
 
 The project extends the idea behind **Role-Play Prompting** by removing the need to manually design a role for each dataset or task type. Instead of hard-coding prompts such as "Math Professor" or "Expert Strategist", the model is asked to infer an appropriate role from the task itself.
 
